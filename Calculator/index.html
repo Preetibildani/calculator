@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+            color: teal;
+            margin-top: 20px;
+            font-size: 46px;
+
+        }
+        #container{
+            height: auto;
+            width: 28%;
+            /* width: 50%; */
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background-color:white;
+            margin: auto;
+            margin-top: 40px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #big_box{
+          
+            background-color: white;
+            width: 93%;
+            height: 60px;
+            margin: auto;
+           color: black;
+            border-radius: 10px;
+            font-size: 30px;
+            text-align: center;
+            margin: auto;
+          padding-top: 15px;
+            justify-content: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            overflow: hidden;
+        }
+        #box{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            /* grid-template-rows: 50px; */
+            height: auto;
+            margin: auto;
+            border-radius: 20px;
+            
+        }
+        .bb{
+            margin: auto;
+            padding: 27px 35px;
+            border-radius: 28px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            background-color: white;
+            margin-top: 20px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    
+        }
+        #cc{
+            background-color: red;
+            color: white;
+        }
+        .black{
+            background-color: black;
+                color: white;
+               margin: auto;
+              margin-top: 20px;
+            padding: 25px 35px;
+             border-radius: 28px;
+               text-align: center;
+               font-size: 25px;
+                  font-weight: bold;
+                  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Masai Calculator</h1>
+    <div id="container">
+             <div id="big_box"></div>
+             <div id="box">
+                <div class="bb">1</div>
+                <div class="bb">2</div>
+                <div class="bb">3</div>
+                <div class="black">+</div>
+                <div class="bb">4</div>
+                <div class="bb">5</div>
+                <div class="bb">6</div>
+                <div class="black" >-</div>
+                <div class="bb">7</div>
+                <div class="bb">8</div>
+                <div class="bb">9</div>
+                <div class="black" >*</div>
+                <div id="cc" class="bb">C</div>
+                <div class="bb">0</div>
+                <div id="equal" class="black" >=</div>
+                <div class="black" >/</div>
+             </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    var equal=document.querySelector("#equal")
+equal.addEventListener("click",my)
+
+function my(){
+    document.getElementById("big_box").innerText="";
+}
+    var keys = document.querySelectorAll("#box>div")
+    var bag = "";
+
+for(var i=0;i<keys.length;i++){
+    keys[i].addEventListener("click",myCalculator)
+}
+function myCalculator(){
+var targetNumber =event.target.innerText;
+
+if(targetNumber=="C"){
+    bag = "";
+    document.querySelector("#big_box").innerText="";
+}
+else if (targetNumber=="="){
+    console.log(eval(bag))
+    document.querySelector("#big_box").innerText= eval(bag);
+
+}
+else{
+    bag = bag +targetNumber
+    document.querySelector("#big_box").innerText= bag;
+
+}
+}
+
+
+</script>
